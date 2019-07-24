@@ -7,18 +7,20 @@
             </div>
             <div class="main-text-area">
                 <div class="time-stamp"><b>Thursday</b> 6:34 pm</div>
-                <div class="message from">
-                    <p>Hei. Can we meet later this week?</p>
-                </div>
-                <div class="message to">
-                    <p>Sure thing. Friday, 4pm, same place?</p>
-                </div>
-                <div class="delivered">Delivered</div>
+<!--                <div class="message from">-->
+<!--                    <p>Hei. Can we meet later this week?</p>-->
+<!--                </div>-->
+<!--                <div class="message to">-->
+<!--                    <p>Sure thing. Friday, 4pm, same place?</p>-->
+<!--                </div>-->
+<!--                <div class="delivered">Delivered</div>-->
+                <component v-for="message in messages" :is="message" :message='text'></component>
             </div>
             <div class="input-bar">
                 <div class="input-bar-inner">
-                    <input id="input-text" value="" placeholder="Message" />
-                    <h6>Send</h6>
+                    <input class="input-text" @keyup.enter="ask" v-model="text"
+                           value="" placeholder="Message" autocomplete="off" />
+                    <h6 @click="ask">Send</h6>
                 </div>
             </div>
         </div>
@@ -26,12 +28,59 @@
 </template>
 
 <script>
+    import axios from 'axios';
+    import MessageTo from './MessageTo.vue';
+    import MessageFrom from './MessageFrom.vue';
+
     export default {
         name: "chatbot",
+        components: {
+            MessageTo,
+            MessageFrom,
+        },
         data() {
             return {
                 isActive: false,
+                detectIntentAPI: 'https://dialogflow.googleapis.com/v2/projects/',
+                projectID: '',
+                sessionID: '',
+                authorization: '',
+                text: [],
+                messages: [],
             }
+        },
+        methods: {
+            async ask() {
+                const inputText = document.querySelector('.input-text');
+                inputText.value = '';
+                this.messages.push(MessageTo);
+                this.message = await this.callAPI();
+                this.messages.push(MessageFrom);
+            },
+            callAPI() {
+                return new Promise((resolve, reject) => {
+                    axios
+                        .post(`${this.detectIntentAPI}${this.projectID}/agent/sessions/${this.sessionID}:detectIntent`, {
+                            query_input: {
+                                    text: {
+                                        text: this.text,
+                                        language_code: "ko"
+                                    }
+                                }
+                        },
+                        {
+                            headers: {
+                                Authorization: this.authorization
+                            }
+                        })
+                        .then( response => {
+                            resolve(response.data.queryResult.fulfillmentText);
+                        })
+                        .catch( error => {
+                            reject(error);
+                        })
+                });
+            },
         }
     }
 </script>
@@ -76,21 +125,19 @@
     background-color: #827DCF;
     font-family: 'Quicksand', sans-serif;
 }
-
 .banner h1 {
     color: white;
     font-size: 25px;
     margin-top: 17.5px;
     font-weight: bold;
 }
-
 .main-text-area {
     position: absolute;
     top: 67px;
     height: 253px;
     width: 100%;
+    overflow-y: scroll;
 }
-
 .time-stamp {
     position: relative;
     width: 100%;
@@ -101,7 +148,6 @@
     font-weight: normal;
     color: #7C7C7C;
 }
-
 .message {
     position: relative;
     display: block;
@@ -110,29 +156,26 @@
     font-size: 17px;
     font-weight: 400;
     border-radius: 10px;
+    margin-bottom: 15px;
 }
-
 .message.from {
     color: white;
     background-color: #827DCF;
     margin-left: 26px;
-    margin-bottom: 15px;
+    float: left;
 }
-
 .message.to {
     color: #7C7C7C;
     background-color: #F1F1F1;
     margin-right: 26px;
     float: right;
 }
-
 .message p {
     text-align: left;
     padding-top: 18px;
     padding-left: 20px;
     margin: 0;
 }
-
 .message:after {
     position: absolute;
     width: 0;
@@ -141,21 +184,18 @@
     content: "";
     margin-top: -9px;
 }
-
 .message.from:after {
     border-top: 17px solid transparent;
     border-right: 16px solid #827DCF;
     border-top-left-radius: 20px;
-    margin-left: -14px;
+    margin-left: -190px;
 }
-
 .message.to:after {
     border-top: 17px solid transparent;
     border-left: 16px solid #F1F1F1;
     border-top-right-radius: 20px;
-    margin-left: 366px;
+    margin-left: 175px;
 }
-
 .delivered {
     float: right;
     display: block;
@@ -166,7 +206,6 @@
     margin-top: 9px;
     font-size: 14px;
 }
-
 .input-bar {
     position: absolute;
     bottom: 0;
@@ -176,14 +215,12 @@
     border-bottom-right-radius: 10px;
     background-color: #F1F1F1;
 }
-
 .input-bar-inner {
     margin: 15px;
     height: 49px;
     border-radius: 7px;
     background-color: white;
 }
-
 .input-bar-inner h6 {
     float: right;
     font-size: 20px;
@@ -196,20 +233,17 @@
     -o-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
 }
-
 .input-bar-inner h6{
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
 }
-
 .input-bar-inner h6:hover{
     opacity: 0.3;
     cursor: pointer;
 }
-
-#input-text {
+.input-text {
     font-size: 17px;
     text-align: center;
     margin-left: 10px;
@@ -220,10 +254,7 @@
     border: none;
     border-right: solid 2px #F1F1F1;
 }
-
-#input-text:focus {
+.input-text:focus {
     outline: none;
 }
-
-
 </style>
