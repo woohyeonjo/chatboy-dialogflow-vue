@@ -4,7 +4,7 @@
         <div class="card">
             <div class="banner">
                 <h1>Chat Boy</h1>
-            </div>
+            </div>ㅇ
             <div class="main-text-area">
                 <div class="time-stamp"><b>Thursday</b> 6:34 pm</div>
 <!--                <div class="message from">-->
@@ -50,12 +50,24 @@
             }
         },
         methods: {
-            async ask() {
+            scrollBottom(){
+                const mainTextArea = document.querySelector('.main-text-area');
+                mainTextArea.scrollTop = mainTextArea.scrollHeight;
+            },
+            clearText(){
                 const inputText = document.querySelector('.input-text');
                 inputText.value = '';
+            },
+            async ask() {
+                // TODO: 한글 타이핑시 두 번 올라감
+                // TODO: 모바일 화면에서 chatboy가 화면을 가린다.
                 this.messages.push(MessageTo);
-                this.message = await this.callAPI();
-                this.messages.push(MessageFrom);
+                // this.message = await this.callAPI();
+                // this.messages.push(MessageFrom);
+                setTimeout(() => {
+                    this.clearText();
+                    this.scrollBottom();
+                }, 0);
             },
             callAPI() {
                 return new Promise((resolve, reject) => {
@@ -147,54 +159,6 @@
     font-size: 12px;
     font-weight: normal;
     color: #7C7C7C;
-}
-.message {
-    position: relative;
-    display: block;
-    height: 54px;
-    width: 75%;
-    font-size: 17px;
-    font-weight: 400;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-.message.from {
-    color: white;
-    background-color: #827DCF;
-    margin-left: 26px;
-    float: left;
-}
-.message.to {
-    color: #7C7C7C;
-    background-color: #F1F1F1;
-    margin-right: 26px;
-    float: right;
-}
-.message p {
-    text-align: left;
-    padding-top: 18px;
-    padding-left: 20px;
-    margin: 0;
-}
-.message:after {
-    position: absolute;
-    width: 0;
-    height: 0;
-    background-color: transparent;
-    content: "";
-    margin-top: -9px;
-}
-.message.from:after {
-    border-top: 17px solid transparent;
-    border-right: 16px solid #827DCF;
-    border-top-left-radius: 20px;
-    margin-left: -190px;
-}
-.message.to:after {
-    border-top: 17px solid transparent;
-    border-left: 16px solid #F1F1F1;
-    border-top-right-radius: 20px;
-    margin-left: 175px;
 }
 .delivered {
     float: right;
