@@ -6,6 +6,7 @@
             <!-- TODO: TimeStamp 표현하기 -->
             <p v-bind:class="{to: chat.to, from: chat.from}">
                 {{ chat.text }}
+                <span class="time-stamp">{{ getTime(chat.date) }}</span>
                 <span class="tail" v-bind:class="{to: chat.to, from: chat.from}"></span>
             </p>
             <!-- TODO: Delivered 표현하기 -->
@@ -25,6 +26,17 @@
                     mainTextArea.scrollTop = mainTextArea.scrollHeight;
                 }, 0);
             },
+            //TODO: 시간 변환 메서드 작성
+            getTime(chatDate) {
+                console.log(chatDate);
+                const date = Date.parse(chatDate);
+                console.log(date);
+                const hours =
+                const minutes = date.getMinutes();
+                const time = `${hours}:${minutes}`;
+
+                return time;
+            }
         },
         computed: {
             // TODO: state 만들고 Gatters 생성하기
