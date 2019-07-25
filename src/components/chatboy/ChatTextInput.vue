@@ -21,10 +21,9 @@
                 this.inputText = '';
             },
             sendChat() {
-                if(inputText === '') return;
-                 //TODO: 뮤테이션 호출
-
-                clearInput();
+                if(this.inputText === '') return;
+                this.$store.commit('sendMessage', this.inputText);
+                this.clearInput();
             }
         }
     }

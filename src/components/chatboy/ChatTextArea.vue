@@ -1,7 +1,8 @@
 <template>
     <transition-group class="text-area" tag="div">
         <!-- TODO: chatLog -> state 로 바꾸기 -->
-        <div class="message" v-for="(chat, index) in chatLog" v-bind:key="index">
+        <!-- FIXME: 스크롤시 말풍선이 배너를 침범함 -->
+        <div class="message" v-for="(chat, index) in this.storedChatLog" v-bind:key="index">
             <!-- TODO: TimeStamp 표현하기 -->
             <p v-bind:class="{to: chat.to, from: chat.from}">
                 {{ chat.text }}
@@ -13,45 +14,25 @@
 </template>
 
 <script>
+    import { mapGetters, mapMutations } from "vuex";
+
     export default {
         name: "ChatTextArea",
-        data() {
-            return {
-                chatLog: [
-                            {
-                                to: true,
-                                from: false,
-                                text: "안녕",
-                                date: "2019-07-25"
-                            },
-                            {
-                                to: false,
-                                from: true,
-                                text: "안녕하세요",
-                                date: "2019-07-25"
-                            },
-                            {
-                                to: true,
-                                from: false,
-                                text: "뭐하세요?",
-                                date: "2019-07-25"
-                            },
-                            {
-                                to: false,
-                                from: true,
-                                text: "코딩해요!코딩해요!코딩해요!코딩해요!코딩해요!" +
-                                    "코딩해요!코딩해요!",
-                                date: "2019-07-25"
-                            }
-                ],
-            }
-        },
         methods: {
             scrollBottom(){
-                const mainTextArea = document.querySelector('.text-area');
-                mainTextArea.scrollTop = mainTextArea.scrollHeight;
+                setTimeout(() => {
+                    const mainTextArea = document.querySelector('.text-area');
+                    mainTextArea.scrollTop = mainTextArea.scrollHeight;
+                }, 0);
             },
-        }
+        },
+        computed: {
+            // TODO: state 만들고 Gatters 생성하기
+            ...mapGetters(['storedChatLog'])
+        },
+        updated() {
+            this.scrollBottom();
+        },
     }
 </script>
 
