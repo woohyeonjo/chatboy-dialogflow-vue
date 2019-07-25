@@ -2,6 +2,9 @@
     <div class="chatboy" v-bind:class="{ slideout: showBoy }">
         <img class="mascot" @click="showBoy = !showBoy" src="../assets/boy-64.png">
         <div class="container">
+            <ChatBanner />
+            <ChatTextArea />
+            <ChatTextInput />
         </div>
     </div>
 </template>
