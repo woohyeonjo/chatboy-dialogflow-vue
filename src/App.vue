@@ -8,7 +8,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import Chatbot from "./components/Chatbot.vue";
+import Chatbot from "./components/Chatboy.vue";
 
 export default {
   name: 'app',
