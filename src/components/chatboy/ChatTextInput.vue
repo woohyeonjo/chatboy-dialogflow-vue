@@ -1,8 +1,9 @@
 <template>
     <div class="input-bar">
         <div class="input-bar-inner">
-            <input class="input-text" value="" placeholder="Message" autocomplete="off" />
-            <h6>Send</h6>
+            <input class="input-text" v-on:keyup.enter="sendChat" v-model="inputText"
+                   placeholder="Message" autocomplete="off" />
+            <h6 @click="sendChat">Send</h6>
         </div>
     </div>
 </template>
@@ -10,8 +11,20 @@
 <script>
     export default {
         name: "ChatTextInput",
+        data () {
+            return {
+                inputText: '',
+            }
+        },
         methods: {
-            clearText(){
+            clearInput() {
+                this.inputText = '';
+            },
+            sendChat() {
+                if(inputText === '') return;
+                 //TODO: 뮤테이션 호출
+
+                clearInput();
             }
         }
     }

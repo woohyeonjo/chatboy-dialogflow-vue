@@ -7,9 +7,16 @@
 </template>
 
 <script>
+    import ChatBanner from "./chatboy/ChatBanner";
+    import ChatTextArea from "./chatboy/ChatTextArea";
+    import ChatTextInput from "./chatboy/ChatTextInput";
+
     export default {
         name: "Chatboy",
         components: {
+            ChatBanner,
+            ChatTextArea,
+            ChatTextInput
         },
         data() {
             return {
