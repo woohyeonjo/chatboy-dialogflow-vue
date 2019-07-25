@@ -2,10 +2,12 @@
     <transition-group class="text-area" tag="div">
         <!-- TODO: chatLog -> state 로 바꾸기 -->
         <div class="message" v-for="(chat, index) in chatLog" v-bind:key="index">
+            <!-- TODO: TimeStamp 표현하기 -->
             <p v-bind:class="{to: chat.to, from: chat.from}">
                 {{ chat.text }}
                 <span class="tail" v-bind:class="{to: chat.to, from: chat.from}"></span>
             </p>
+            <!-- TODO: Delivered 표현하기 -->
         </div>
     </transition-group>
 </template>
