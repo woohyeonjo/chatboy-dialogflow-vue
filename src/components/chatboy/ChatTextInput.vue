@@ -50,7 +50,7 @@
     font-size: 20px;
     margin-top: 14px;
     margin-right: 27px;
-    color: #827DCF;
+    color: #381e1f;
     font-weight: 400;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;

@@ -6,7 +6,7 @@
             <!-- TODO: TimeStamp 표현하기 -->
             <p v-bind:class="{to: chat.to, from: chat.from}">
                 {{ chat.text }}
-                <span class="time-stamp">{{ getTime(chat.date) }}</span>
+                <span class="time-stamp" v-bind:class="{to: chat.to, from: chat.from}">{{ chat.when.time }}</span>
                 <span class="tail" v-bind:class="{to: chat.to, from: chat.from}"></span>
             </p>
             <!-- TODO: Delivered 표현하기 -->
@@ -27,19 +27,18 @@
                 }, 0);
             },
             //TODO: 시간 변환 메서드 작성
-            getTime(chatDate) {
-                console.log(chatDate);
-                const date = Date.parse(chatDate);
-                console.log(date);
-                const hours =
-                const minutes = date.getMinutes();
-                const time = `${hours}:${minutes}`;
-
-                return time;
-            }
+            // getTime(chatDate) {
+            //     console.log(chatDate);
+            //     const date = Date.parse(chatDate);
+            //     console.log(date);
+            //     const hours =
+            //     const minutes = date.getMinutes();
+            //     const time = `${hours}:${minutes}`;
+            //
+            //     return time;
+            // }
         },
         computed: {
-            // TODO: state 만들고 Gatters 생성하기
             ...mapGetters(['storedChatLog'])
         },
         updated() {
@@ -51,14 +50,20 @@
 <style scoped>
 .text-area {
     position: absolute;
+    background-color: #9bbbd4;
     top: 67px;
     height: 253px;
     width: 100%;
     overflow-y: scroll;
+    -ms-overflow-style: none;
+}
+.text-area::-webkit-scrollbar {
+    display: none;
 }
 .message {
-    width: 90%;
-    margin: 10px auto;
+    width: 85%;
+    margin: 5px auto;
+    margin-left: 65px;
     height: auto;
     overflow: hidden;
 }
@@ -74,13 +79,27 @@
 }
 .message p.to {
     color: #7C7C7C;
-    background-color: #F1F1F1;
+    background-color: #fef01b;
+    color: black;
     float: right;
 }
 .message p.from {
     color: white;
-    background-color: #827DCF;
+    background-color: #ffffff;
+    color: white;
     float: left;
+}
+.time-stamp.to {
+     position: absolute;
+     color: #556677;
+     font-size: 10px;
+     bottom: 2px;
+     left: -37px;
+}
+.time-stamp.from {
+    position: absolute;
+    color: #556677;
+    font-size: 10px;
 }
 .tail {
     position: absolute;
@@ -90,13 +109,13 @@
 }
 .tail.from {
     left: -10px;
-    border-bottom: 10px solid #827DCF;
+    border-bottom: 10px solid #ffffff;
     border-left: 10px solid transparent;
     border-top-left-radius: 10px;
 }
 .tail.to {
     right: -10px;
-    border-bottom: 10px solid #F1F1F1;
+    border-bottom: 10px solid #fef01b;
     border-right: 10px solid transparent;
     border-top-right-radius: 10px;
 }

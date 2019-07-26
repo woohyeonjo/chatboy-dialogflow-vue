@@ -17,7 +17,7 @@
     border-top-right-radius: 10px;
     height: 67px;
     width: 100%;
-    background-color: #827DCF;
+    background-color: #381e1f;
     font-family: 'Quicksand', sans-serif;
 }
 .banner h1 {
