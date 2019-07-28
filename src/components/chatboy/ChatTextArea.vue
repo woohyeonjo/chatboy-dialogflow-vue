@@ -1,9 +1,6 @@
 <template>
     <transition-group class="text-area" tag="div">
-        <!-- TODO: chatLog -> state 로 바꾸기 -->
-        <!-- FIXME: 스크롤시 말풍선이 배너를 침범함 -->
         <div class="message" v-for="(chat, index) in this.storedChatLog" v-bind:key="index">
-            <!-- TODO: TimeStamp 표현하기 -->
             <p v-bind:class="{to: chat.to, from: chat.from}">
                 {{ chat.text }}
                 <span class="time-stamp" v-bind:class="{to: chat.to, from: chat.from}">{{ chat.when.time }}</span>
