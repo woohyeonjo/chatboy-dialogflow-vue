@@ -1,4 +1,5 @@
 <template>
+    <!-- TODO: 처음 켜졌을 때도 스크롤 바텀 실행 -->
     <div class="chatboy" v-bind:class="{ slideout: showBoy }" v-on:keyup.esc="showBoy = !showBoy">
         <img class="mascot" @click="showBoy = !showBoy" src="../assets/boy-64.png">
         <div class="container">

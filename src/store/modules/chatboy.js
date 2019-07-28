@@ -1,4 +1,5 @@
 import dialogFlow from '@/api/dialogFlowAPI.js';
+import { util } from '../../assets/util/util.js';
 
 const storage = {
     fetch() {
@@ -24,16 +25,24 @@ const getters = {
 
 const mutations = {
     sendMessage(state, chat) {
-        const now = new Date();
-        const week = ['일', '월', '화', '수', '목', '금', '토'];
-        const current = {
-            date: `${now.getMonth()}월 ${now.getDate()}일 ${week[now.getDay()]}요일`,
-            time: `${now.getHours()} : ${now.getMinutes()}`
-        };
+        const current = util.getNow();
         const to = { to: true, from: false, text: chat, when: current };
 
         sessionStorage.setItem(current.date + " / " + current.time, JSON.stringify(to));
         state.chatLog.push(to);
+
+    },
+    receiveMessage(state) {
+        // const current = util.getNow();
+        // const chat = questionToChatboy();
+        // const from = { to: false, from: true, text: chat, when: current };
+        //
+        // sessionStorage.setItem(current.date + " / " + current.time, JSON.stringify(from));
+        // state.chatLog.push(from);
+    },
+    questionToChatboy(state) {
+        // API Call
+        // return result
     },
 
 };
