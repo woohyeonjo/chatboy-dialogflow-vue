@@ -24,6 +24,7 @@
                 if(this.inputText === '') return;
                 this.$store.commit('sendMessage', this.inputText);
                 this.clearInput();
+                this.$store.commit('receiveMessage');
             }
         }
     }

@@ -1,4 +1,4 @@
-import dialogFlow from '@/api/dialogFlowAPI.js';
+import { dialogFlow } from "../../api/dialogFlowAPI";
 import { util } from '../../assets/util/util.js';
 
 const storage = {
@@ -28,23 +28,17 @@ const mutations = {
         const current = util.getNow();
         const to = { to: true, from: false, text: chat, when: current };
 
-        sessionStorage.setItem(current.date + " / " + current.time, JSON.stringify(to));
+        sessionStorage.setItem(current.date + " / " + current.detailTime, JSON.stringify(to));
         state.chatLog.push(to);
+    },
+    async receiveMessage(state) {
+        const current = util.getNow();
+        const chat = await dialogFlow.detectIntent(state.chatLog[state.chatLog.length - 1].text);
+        const from = { to: false, from: true, text: chat, when: current };
 
+        sessionStorage.setItem(current.date + " / " + current.detailTime, JSON.stringify(from));
+        state.chatLog.push(from);
     },
-    receiveMessage(state) {
-        // const current = util.getNow();
-        // const chat = questionToChatboy();
-        // const from = { to: false, from: true, text: chat, when: current };
-        //
-        // sessionStorage.setItem(current.date + " / " + current.time, JSON.stringify(from));
-        // state.chatLog.push(from);
-    },
-    questionToChatboy(state) {
-        // API Call
-        // return result
-    },
-
 };
 
 export default {

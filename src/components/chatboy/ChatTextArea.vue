@@ -1,6 +1,7 @@
 <template>
     <transition-group class="text-area" tag="div">
-        <div class="message" v-for="(chat, index) in this.storedChatLog" v-bind:key="index">
+        <div class="message" v-for="(chat, index) in this.storedChatLog"
+             v-bind:key="index" v-bind:class="{to: chat.to, from: chat.from}">
             <p v-bind:class="{to: chat.to, from: chat.from}">
                 {{ chat.text }}
                 <span class="time-stamp" v-bind:class="{to: chat.to, from: chat.from}">{{ chat.when.time }}</span>
@@ -47,9 +48,15 @@
     }
     .message {
         width: 90%;
-        padding: 5px 0 5px 40px;
         height: auto;
         overflow: hidden;
+    }
+    .message.to {
+        padding: 5px 0 5px 40px;
+    }
+    .message.from {
+        padding: 5px 40px 5px 0;
+        margin-left: 8px;
     }
     .message p {
         position: relative;
@@ -68,7 +75,7 @@
         float: right;
     }
     .message p.from {
-        color: white;
+        color: black;
         background-color: #ffffff;
         float: left;
     }
@@ -76,13 +83,15 @@
         position: absolute;
         color: #556677;
         font-size: 10px;
-        bottom: 2px;
+        bottom: 3px;
         left: -37px;
     }
     .time-stamp.from {
         position: absolute;
         color: #556677;
         font-size: 10px;
+        bottom: 3px;
+        right: -37px;
     }
     .tail {
         position: absolute;

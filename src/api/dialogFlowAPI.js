@@ -1,18 +1,20 @@
+import axios from 'axios';
+
 export const dialogFlow = {
-    detectIntent() {
+    detectIntent(question) {
         return new Promise((resolve, reject) => {
             axios
-                .post(`${this.detectIntentURL}${this.projectID}/agent/sessions/${this.sessionID}:detectIntent`, {
+                .post('https://dialogflow.googleapis.com/v2/projects/ssafy-house/agent/sessions/123456789:detectIntent', {
                         query_input: {
                             text: {
-                                text: /* 원본 텍스트 */'',
+                                text: question,
                                 language_code: "ko"
                             }
                         }
                     },
                     {
                         headers: {
-                            Authorization: this.authorization
+                            Authorization: 'Bearer ya29.c.ElpUB3MlKnBXIoCoMsszmPcYuX849PybSgOzdx8O9n5IacL_LY_50luK-o69C642sjQJ_SUcxkh0glw6mytx7c2HhZjxM3p4q3cRACgSkd14v53svXSZXbK4rPs'
                         }
                     })
                 .then( response => {
