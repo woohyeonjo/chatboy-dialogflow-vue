@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const ACCESS_TOKEN =
     "Bearer " +
-    "";
 
 export const dialogFlow = {
     detectIntent(question) {

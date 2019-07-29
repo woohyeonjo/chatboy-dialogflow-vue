@@ -16,19 +16,11 @@
     import { mapGetters, mapMutations } from "vuex";
     export default {
         name: "ChatTextArea",
-        methods: {
-            scrollBottom(){
-                setTimeout(() => {
-                    const mainTextArea = document.querySelector('.text-area');
-                    mainTextArea.scrollTop = mainTextArea.scrollHeight;
-                }, 0);
-            },
-        },
         computed: {
             ...mapGetters(['storedChatLog'])
         },
         updated() {
-            this.scrollBottom();
+            this.$emit('scrollBottom');
         },
     }
 </script>

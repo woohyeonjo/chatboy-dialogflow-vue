@@ -1,15 +1,16 @@
 <template>
-    <!-- TODO: 처음 켜졌을 때도 스크롤 바텀 실행 -->
     <div class="chatboy" v-bind:class="{ slideout: showBoy }" v-on:keyup.esc="showBoy = !showBoy">
         <img class="mascot" @click="showBoy = !showBoy" src="../assets/boy-64.png">
+        {{ init }}
+        <!-- TODO: 시발 init 어떻게 처리해주지? -->
         <div class="container">
             <ChatBanner />
-            <ChatTextArea />
+            <ChatTextArea v-on:scrollBottom="scrollBottom"/>
             <ChatTextInput />
         </div>
     </div>
 </template>
-
+ㅇ
 <script>
     import ChatBanner from "./chatboy/ChatBanner";
     import ChatTextArea from "./chatboy/ChatTextArea";
@@ -27,6 +28,20 @@
                 showBoy: false,
             }
         },
+        methods: {
+            scrollBottom(){
+                setTimeout(() => {
+                    const mainTextArea = document.querySelector('.text-area');
+                    mainTextArea.scrollTop = mainTextArea.scrollHeight;
+                }, 0);
+            },
+        },
+        computed: {
+            init: function() {
+                if (this.showBoy) this.scrollBottom();
+                console.log("init");
+            }
+        }
     }
 </script>
 <style scoped>
