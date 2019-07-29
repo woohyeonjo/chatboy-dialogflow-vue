@@ -2,19 +2,19 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <Chatbot />
+    <Chatboy />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import Chatbot from "./components/Chatboy.vue";
+import Chatboy from "./components/Chatboy.vue";
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
-    Chatbot,
+    Chatboy,
   }
 }
 </script>

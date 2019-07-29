@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+const ACCESS_TOKEN =
+    "Bearer " +
+    "";
+
 export const dialogFlow = {
     detectIntent(question) {
         return new Promise((resolve, reject) => {
@@ -14,8 +18,8 @@ export const dialogFlow = {
                     },
                     {
                         headers: {
-                            Authorization: 'Bearer ya29.c.ElpUB3MlKnBXIoCoMsszmPcYuX849PybSgOzdx8O9n5IacL_LY_50luK-o69C642sjQJ_SUcxkh0glw6mytx7c2HhZjxM3p4q3cRACgSkd14v53svXSZXbK4rPs'
-                        }
+                            Authorization: ACCESS_TOKEN,
+                         }
                     })
                 .then( response => {
                     resolve(response.data.queryResult.fulfillmentText);
