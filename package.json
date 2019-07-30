@@ -1,9 +1,9 @@
 {
-  "name": "@nnm/chatbot",
+  "name": "@nnm/chatboy",
   "description": "A chatbot on a Vue-based web and use the Google Dialogflow API.",
   "keywords": ["chatbot", "nnm", "chatboy", "kakaotalkstyle", "dialogflow"],
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "main": "dist/chatboy.common.js",
   "repository": {

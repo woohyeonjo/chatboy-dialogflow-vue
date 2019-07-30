@@ -1,5 +1,7 @@
 # chatboy
 
+![npm](https://img.shields.io/npm/v/@nnm/chatboy) ![NPM](https://img.shields.io/npm/l/@nnm/chatboy)
+
 The goal of this project is to create a chatbot on a Vue-based web and use the Google Dialogflow API.
 
 
@@ -17,7 +19,10 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 > #### Create a Google Cloud project.
 
 - [Google Dialogflow API](https://cloud.google.com/dialogflow/docs/)
+
 - [Google Cloud Platform Project](<https://cloud.google.com/resource-manager/docs/creating-managing-projects>)
+
+  
 
 
 > #### Get a Dialogflow Authentication key
@@ -45,11 +50,13 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 > #### Use chatboy
 
 - ```js
-  
+  import 'chatboy' from '@nnm/chatboy'
+  import '@nnm/chatboy/dist/chatboy.css'
   ```
-
-- ```js
-  
+- ```
+  ...
+  Vue.use(chatboy);
+  ...
   ```
 
 - ```js
@@ -91,4 +98,4 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 
 ## LICENSE
 
-This is released under the MIT license. See [LICENSE]() for details.
+This is released under the MIT license. See [LICENSE](LICENSE) for details.
