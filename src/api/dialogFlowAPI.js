@@ -1,23 +1,36 @@
 import axios from 'axios';
+import { store } from "../store/store.js";
 
-const ACCESS_TOKEN =
-    "Bearer " +
+let ACCESS_INFO ='';
+
+setTimeout(() => {
+    ACCESS_INFO = store.state.chatboy.access_info;
+}, 0);
+
+const ACCESS_DOMAIN = "https://dialogflow.googleapis.com/v2/projects/";
+const ACCESS_SESSIONS = "/agent/sessions/123456789:detectIntent";
+const ACCESS_TOKEN_PREFIX = "Bearer ";
 
 export const dialogFlow = {
     detectIntent(question) {
+        const ACCESS_PROJECT_NAME = ACCESS_INFO.project_name;
+        const ACCESS_TOKEN = ACCESS_INFO.access_token;
+        const LANGUAGE_CODE = ACCESS_INFO.language_code;
+        const ACCESS_URL = ACCESS_DOMAIN + ACCESS_PROJECT_NAME + ACCESS_SESSIONS;
+
         return new Promise((resolve, reject) => {
             axios
-                .post('https://dialogflow.googleapis.com/v2/projects/ssafy-house/agent/sessions/123456789:detectIntent', {
+                .post(ACCESS_URL, {
                         query_input: {
                             text: {
                                 text: question,
-                                language_code: "ko"
+                                language_code: LANGUAGE_CODE
                             }
                         }
                     },
                     {
                         headers: {
-                            Authorization: ACCESS_TOKEN,
+                            Authorization: ACCESS_TOKEN_PREFIX + ACCESS_TOKEN,
                          }
                     })
                 .then( response => {

@@ -2,7 +2,9 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <Chatboy />
+    <Chatboy project-name="ssafy-house"
+             language-code="ko"
+             access-token="ya29.c.El9VB8MF7HtkfKhw6O1-aB8CFAU0ReJzQncaaPQFwExkGW---_JeqtBj_ISplF-T0N2Hj59Qor8iYgNAS6VHwko7AlFUBppBOnFjh58j0Vl5ViIucx4NCzrCAcuhEfcMUA"/>
   </div>
 </template>
 

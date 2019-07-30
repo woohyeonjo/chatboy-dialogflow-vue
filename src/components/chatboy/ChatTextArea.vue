@@ -7,13 +7,12 @@
                 <span class="time-stamp" v-bind:class="{to: chat.to, from: chat.from}">{{ chat.when.time }}</span>
                 <span class="tail" v-bind:class="{to: chat.to, from: chat.from}"></span>
             </p>
-            <!-- TODO: Delivered 표현하기 -->
         </div>
     </transition-group>
 </template>
 
 <script>
-    import { mapGetters, mapMutations } from "vuex";
+    import { mapGetters } from "vuex";
     export default {
         name: "ChatTextArea",
         computed: {

@@ -1,8 +1,6 @@
 <template>
-    <div class="chatboy" v-bind:class="{ slideout: showBoy }" v-on:keyup.esc="showBoy = !showBoy">
-        <img class="mascot" @click="showBoy = !showBoy" src="../assets/boy-64.png">
-        {{ init }}
-        <!-- TODO: 시발 init 어떻게 처리해주지? -->
+    <div class="chatboy" v-bind:class="{ slideout: showBoy }" v-on:keyup.esc=init>
+        <img class="mascot" @click=init src="../assets/boy-64.png">
         <div class="container">
             <ChatBanner />
             <ChatTextArea v-on:scrollBottom="scrollBottom"/>
@@ -10,7 +8,7 @@
         </div>
     </div>
 </template>
-ㅇ
+
 <script>
     import ChatBanner from "./chatboy/ChatBanner";
     import ChatTextArea from "./chatboy/ChatTextArea";
@@ -28,7 +26,12 @@
                 showBoy: false,
             }
         },
+        props: [ 'projectName', 'accessToken', 'languageCode'],
         methods: {
+            init() {
+                this.showBoy = !this.showBoy;
+                if (this.showBoy) this.scrollBottom();
+            },
             scrollBottom(){
                 setTimeout(() => {
                     const mainTextArea = document.querySelector('.text-area');
@@ -36,11 +39,12 @@
                 }, 0);
             },
         },
-        computed: {
-            init: function() {
-                if (this.showBoy) this.scrollBottom();
-                console.log("init");
-            }
+        created() {
+            this.$store.commit('setAccessKey', {
+                project_name: this.projectName,
+                access_token: this.accessToken,
+                language_code: this.languageCode
+            });
         }
     }
 </script>
