@@ -1,15 +1,12 @@
 import Chatboy from './components/Chatboy'
+import { chat } from './store/modules/chat.js'
 
-const install = (Vue) => {
-    Vue.component(Chatboy.name, Chatboy)
-}
+const install = (Vue, options={}) => {
+    if ( !options.store ) return new Error('Please provide a store!');
 
-if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue)
-}
+    Vue.component(Chatboy.name, Chatboy);
 
-export {
-    Chatboy
+    options.store.registerModule('chatboy', chat);
 }
 
 export default install

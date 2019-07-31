@@ -4,7 +4,7 @@ import { store } from "../store/store.js";
 let ACCESS_INFO ='';
 
 setTimeout(() => {
-    ACCESS_INFO = store.state.chatboy.access_info;
+    ACCESS_INFO = store.state.access_info;
 }, 0);
 
 const ACCESS_DOMAIN = "https://dialogflow.googleapis.com/v2/projects/";

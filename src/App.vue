@@ -3,8 +3,9 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <Chatboy project-name=""
+             access-token=""
              language-code=""
-             access-token=""/>
+    />
   </div>
 </template>
 

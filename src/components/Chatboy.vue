@@ -1,6 +1,6 @@
 <template>
     <div class="chatboy" v-bind:class="{ slideout: showBoy }" v-on:keyup.esc=init>
-        <img class="mascot" @click=init src="../assets/boy-64.png">
+        <img class="mascot" @click=init src="@/assets/boy-64.png">
         <div class="container">
             <ChatBanner />
             <ChatTextArea v-on:scrollBottom="scrollBottom"/>

@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import chatboy from './modules/chatboy.js'
+import { chat } from './modules/chat.js'
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-    modules: {
-        chatboy,
-    },
+    modules: { chat }
 });

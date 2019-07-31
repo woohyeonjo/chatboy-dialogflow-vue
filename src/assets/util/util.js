@@ -8,5 +8,14 @@ export const util = {
             detailTime: `${now.getHours()} : ${now.getMinutes()} : ${now.getSeconds()}`
         };
         return current;
-    }
+    },
+    fetch() {
+        const arr = [];
+        if (sessionStorage.length > 0) {
+            for (let i = 0; i < sessionStorage.length; ++i) {
+                arr.push(JSON.parse(sessionStorage.getItem(sessionStorage.key(i))));
+            }
+        }
+        return arr;
+    },
 };
