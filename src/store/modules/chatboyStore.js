@@ -12,9 +12,6 @@ export const chat = {
         },
         getLength(state) {
             return state.chatLog.length;
-        },
-        getAccessKey(state) {
-            return state.access_info;
         }
     },
     mutations: {
@@ -38,8 +35,10 @@ export const chat = {
     },
     actions: {
         async question(context) {
-            const chat = await dialogFlow.detectIntent(context.state.chatLog[context.getters.getLength - 1].text);
-            context.commit('receiveMessage', chat);
+            const access = context.state.access_info;
+            const toText = context.state.chatLog[context.getters.getLength - 1].text;
+            const fromText = await dialogFlow.detectIntent(access, toText);
+            context.commit('receiveMessage', fromText);
         },
     }
 }
