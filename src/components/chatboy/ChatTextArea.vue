@@ -1,6 +1,6 @@
 <template>
     <transition-group class="text-area" tag="div">
-        <div class="message" v-for="(chat, index) in this.chatLog"
+        <div class="message" v-for="(chat, index) in this.storedChatLog"
              v-bind:key="index" v-bind:class="{to: chat.to, from: chat.from}">
             <p v-bind:class="{to: chat.to, from: chat.from}">
                 {{ chat.text }}
@@ -16,9 +16,7 @@
     export default {
         name: "ChatTextArea",
         computed: {
-            ...mapGetters({
-                chatLog: "storedChatLog"
-            })
+            ...mapGetters(['storedChatLog'])
         },
         updated() {
             this.$emit('scrollBottom');

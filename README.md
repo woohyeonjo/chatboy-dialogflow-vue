@@ -32,9 +32,10 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 - [Cloud SDK](https://cloud.google.com/sdk/docs/)
 - [Dialogflow Setting up authentication](https://dialogflow.com/docs/reference/v2-auth-setup)
 - **GOOGLE_APPLICATION_CREDENTIALS**
+  
   - [MAC](https://jungwoon.github.io/google%20cloud/2018/01/11/Google-Application-Default-Credential/)
-  - [WINDOWS 10](https://m.blog.naver.com/PostView.nhn?blogId=chandong83&logNo=220981452650&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
-
+- [WINDOWS 10](https://m.blog.naver.com/PostView.nhn?blogId=chandong83&logNo=220981452650&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
+  
 - [ACCESS TOKEN](https://github.com/innFactory/react-native-dialogflow/issues/31)
 
   
@@ -50,12 +51,15 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 > #### Use chatboy
 
 - ```js
-  import 'chatboy' from '@nnm/chatboy'
+  // Your Vuex store
+  import store from './store/store.js'
+  
+  import 'chatboyStore' from '@nnm/chatboy'
   import '@nnm/chatboy/dist/chatboy.css'
   ```
 - ```
   ...
-  Vue.use(chatboy);
+  Vue.use(chatboyStore, { store });
   ...
   ```
 
@@ -80,9 +84,10 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 
 ## TODO
 
-- `SessionStorage` 사용
-- `Vuex` 모듈화
-- 카카오톡 스타일의 CSS 구현 
+- Try Google SDK
+- Try SessionStorage
+- Try Vuex
+- Try KakaoTalk Style CSS
 
 
 
@@ -90,9 +95,22 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 
 ## LEARNED
 
+- Google SDK
+  - Get access token
+  - Set GOOGLE_APPLICATION_CREDENTIALS
+- Vuex
+  - Use within a npm package
+    - Namespacing
+    - Modularization
+    - Dynamic module registration
+    - Plug-in
 
-
-
+- Publish npm package
+  - Make entry point
+  - Set image path
+- CSS
+  - Make Speech bubble tail
+  - position
 
 
 

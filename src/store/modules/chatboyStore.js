@@ -1,7 +1,7 @@
 import { dialogFlow } from "../../api/dialogFlowAPI";
 import { util } from '../../assets/util/util.js';
 
-export const chat = {
+export const chatboyStore = {
     state: {
         chatLog: util.fetch(),
         access_info: '',

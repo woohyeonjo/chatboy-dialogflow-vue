@@ -1,12 +1,12 @@
 import Chatboy from './components/Chatboy'
-import { chat } from './store/modules/chat.js'
+import { chatboyStore } from './store/modules/chatboyStore.js'
 
 const install = (Vue, options={}) => {
-    if ( !options.store ) return new Error('Please provide a store!');
+    if ( !options.store ) return new Error('Please provide a index!');
 
     Vue.component(Chatboy.name, Chatboy);
 
-    options.store.registerModule('chatboy', chat);
+    options.store.registerModule('chatboy', chatboyStore);
 }
 
 export default install

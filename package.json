@@ -1,18 +1,24 @@
 {
   "name": "@nnm/chatboy",
   "description": "A chatbot on a Vue-based web and use the Google Dialogflow API.",
-  "keywords": ["chatbot", "nnm", "chatboy", "kakaotalkstyle", "dialogflow"],
+  "keywords": [
+    "chatbot",
+    "nnm",
+    "chatboy",
+    "kakaotalkstyle",
+    "dialogflow"
+  ],
   "license": "MIT",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "main": "dist/chatboy.common.js",
   "repository": {
     "type": "git",
-    "url" : "git+https://github.com/woohyeonjo/chatboy-dialogflow.git"
+    "url": "git+https://github.com/woohyeonjo/chatboy-dialogflow.git"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name chatboy src/index.js",
+    "build": "vue-cli-service build --target lib --name chatboy src/plugin.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

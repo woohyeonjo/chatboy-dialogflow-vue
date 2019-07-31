@@ -1,18 +1,11 @@
 import axios from 'axios';
-import { store } from "../store/store.js";
-
-let ACCESS_INFO ='';
-
-setTimeout(() => {
-    ACCESS_INFO = store.state.access_info;
-}, 0);
 
 const ACCESS_DOMAIN = "https://dialogflow.googleapis.com/v2/projects/";
 const ACCESS_SESSIONS = "/agent/sessions/123456789:detectIntent";
 const ACCESS_TOKEN_PREFIX = "Bearer ";
 
 export const dialogFlow = {
-    detectIntent(question) {
+    detectIntent(ACCESS_INFO, question) {
         const ACCESS_PROJECT_NAME = ACCESS_INFO.project_name;
         const ACCESS_TOKEN = ACCESS_INFO.access_token;
         const LANGUAGE_CODE = ACCESS_INFO.language_code;
