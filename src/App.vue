@@ -10,8 +10,10 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue';
 import Chatboy from "./components/Chatboy.vue";
+
+import './util/reset.css';
 
 export default {
   name: 'app',

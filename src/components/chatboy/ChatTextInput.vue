@@ -1,7 +1,7 @@
 <template>
-    <div class="input-bar">
-        <div class="input-bar-inner">
-            <input class="input-text" v-on:keyup.enter="sendChat" v-model="inputText"
+    <div class="nnm__input-bar">
+        <div class="nnm__input-bar-inner">
+            <input class="nnm__input-text" v-on:keyup.enter="sendChat" v-model="inputText"
                    placeholder="Message" autocomplete="off" />
             <h6 @click="sendChat">Send</h6>
         </div>
@@ -30,45 +30,40 @@
     }
 </script>
 
-<style scoped>
-.input-bar {
-    position: absolute;
-    bottom: 0;
+<style lang="scss" scoped>
+.nnm__input-bar {
+    display: flex;
+    justify-content: center;
     height: 80px;
-    width: 100%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: #F1F1F1;
 }
-.input-bar-inner {
+.nnm__input-bar-inner {
     margin: 15px;
     height: 49px;
     border-radius: 7px;
     background-color: white;
+    h6 {
+        float: right;
+        font-size: 20px;
+        margin-top: 14px;
+        margin-left: 10px;
+        margin-right: 27px;
+        color: #381e1f;
+        font-weight: 400;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        &:hover {
+            opacity: 0.3;
+            cursor: pointer;
+        }
+    }
+
 }
-.input-bar-inner h6 {
-    float: right;
-    font-size: 20px;
-    margin-top: 14px;
-    margin-right: 27px;
-    color: #381e1f;
-    font-weight: 400;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-}
-.input-bar-inner h6{
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-}
-.input-bar-inner h6:hover{
-    opacity: 0.3;
-    cursor: pointer;
-}
-.input-text {
+.nnm__input-text {
     font-size: 17px;
     text-align: center;
     margin-left: 10px;
@@ -78,8 +73,8 @@
     font-weight: 400;
     border: none;
     border-right: solid 2px #F1F1F1;
-}
-.input-text:focus {
-    outline: none;
+    &:focus {
+        outline: none;
+    }
 }
 </style>

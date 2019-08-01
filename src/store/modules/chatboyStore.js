@@ -1,5 +1,5 @@
 import { dialogFlow } from "../../api/dialogFlowAPI";
-import { util } from '../../assets/util/util.js';
+import { util } from '../../util/util.js';
 
 export const chatboyStore = {
     state: {

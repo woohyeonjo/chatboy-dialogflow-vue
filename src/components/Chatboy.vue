@@ -1,7 +1,9 @@
 <template>
-    <div class="chatboy" v-bind:class="{ slideout: showBoy }" v-on:keyup.esc=init>
-        <img class="mascot" @click=init src="@/assets/boy-64.png">
-        <div class="container">
+    <div class="nnm__chatboy" v-bind:class="{ nnm__slideout: showBoy }" v-on:keyup.esc=init>
+        <div class="nnm__img-box">
+            <img class="nnm__mascot" @click=init :src=img_mascot>
+        </div>
+        <div class="nnm__container">
             <ChatBanner />
             <ChatTextArea v-on:scrollBottom="scrollBottom"/>
             <ChatTextInput />
@@ -14,6 +16,8 @@
     import ChatTextArea from "./chatboy/ChatTextArea";
     import ChatTextInput from "./chatboy/ChatTextInput";
 
+    import imgMascot from '../assets/boy-64.png';
+
     export default {
         name: "Chatboy",
         components: {
@@ -24,6 +28,8 @@
         data() {
             return {
                 showBoy: false,
+                img_mascot: imgMascot,
+
             }
         },
         props: [ 'projectName', 'accessToken', 'languageCode'],
@@ -31,12 +37,6 @@
             init() {
                 this.showBoy = !this.showBoy;
                 if (this.showBoy) this.scrollBottom();
-            },
-            scrollBottom(){
-                setTimeout(() => {
-                    const mainTextArea = document.querySelector('.text-area');
-                    mainTextArea.scrollTop = mainTextArea.scrollHeight;
-                }, 0);
             },
         },
         created() {
@@ -49,26 +49,33 @@
     }
 </script>
 <style scoped>
-.slideout {
-    -webkit-transform: translateY(-410px);
-    transform: translateY(-410px)
+.nnm__slideout {
+    -webkit-transform: translateY(-400px);
+    transform: translateY(-400px)
 }
-.chatboy {
+.nnm__chatboy {
     position: fixed;
-    right: 15px;
-    bottom: -395px;
+    right: 10px;
+    bottom: -390px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    flex-direction: column;
     width: 490px;
-    height: 464px;
     -webkit-transition: .6s all;
     transition: .6s all;
 }
-.mascot {
+
+.nnm__img-box {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.nnm__mascot {
      cursor: pointer;
-     display: block;
-     margin: auto;
  }
-.container {
-    position: relative;
+.nnm__container {
     width: 490px;
     height: 400px;
     background-color: white;

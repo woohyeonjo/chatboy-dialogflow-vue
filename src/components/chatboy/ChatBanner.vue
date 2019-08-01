@@ -1,5 +1,5 @@
 <template>
-    <div class="banner">
+    <div class="nnm__banner">
         <h1>Chat Boy</h1>
     </div>
 </template>
@@ -10,20 +10,21 @@
     }
 </script>
 
-<style scoped>
-.banner {
-    position: absolute;
+<style lang="scss" scoped>
+.nnm__banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     height: 67px;
-    width: 100%;
     background-color: #381e1f;
     font-family: 'Quicksand', sans-serif;
-}
-.banner h1 {
-    color: white;
-    font-size: 25px;
-    margin-top: 17.5px;
-    font-weight: bold;
+    h1 {
+        margin-top: 0;
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+    }
 }
 </style>

@@ -98,19 +98,23 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 - Google SDK
   - Get access token
   - Set GOOGLE_APPLICATION_CREDENTIALS
+- Vue
+  - Image import
 - Vuex
   - Use within a npm package
     - Namespacing
     - Modularization
     - Dynamic module registration
     - Plug-in
-
 - Publish npm package
   - Make entry point
   - Set image path
 - CSS
   - Make Speech bubble tail
-  - position
+  - Position
+  - Flex
+- Webpack
+  - Default rule of Image bundling on babel
 
 
 
