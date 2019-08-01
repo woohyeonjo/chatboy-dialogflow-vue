@@ -74,7 +74,7 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 
 ## PREVIEW
 
-![](.\readme\preview.gif)
+![](readme\preview.gif)
 
 
 
