@@ -74,7 +74,7 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 
 ## PREVIEW
 
-<img src="readme/preview.gif" alt="usage gif">
+    <img src="readme/preview.gif" alt="usage gif">
 
 
 
