@@ -38,6 +38,10 @@
                 this.showBoy = !this.showBoy;
                 if (this.showBoy) this.scrollBottom();
             },
+            scrollBottom(){
+                const mainTextArea = document.querySelector('.nnm__text-area');
+                mainTextArea.scrollTop = mainTextArea.scrollHeight;
+            },
         },
         created() {
             this.$store.commit('setAccessKey', {
