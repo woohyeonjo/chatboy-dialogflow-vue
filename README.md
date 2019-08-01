@@ -8,9 +8,9 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 
 ## STRUCTURE
 
-
-
-
+```
+    
+```
 
 
 
@@ -74,11 +74,7 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 
 ## PREVIEW
 
-
-
-
-
-
+![](C:\Users\multicampus\Desktop\chatboy\readme\preview.gif)
 
 
 
