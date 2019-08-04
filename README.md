@@ -34,7 +34,7 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 - **GOOGLE_APPLICATION_CREDENTIALS**
   
   - [MAC](https://jungwoon.github.io/google%20cloud/2018/01/11/Google-Application-Default-Credential/)
-- [WINDOWS 10](https://m.blog.naver.com/PostView.nhn?blogId=chandong83&logNo=220981452650&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
+  - [WINDOWS 10](https://m.blog.naver.com/PostView.nhn?blogId=chandong83&logNo=220981452650&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
   
 - [ACCESS TOKEN](https://github.com/innFactory/react-native-dialogflow/issues/31)
 
