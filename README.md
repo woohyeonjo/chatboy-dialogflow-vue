@@ -5,11 +5,9 @@
 The goal of this project is to create a chatbot on a Vue-based web and use the Google Dialogflow API.
 
 
+## PREVIEW
 
-## STRUCTURE
-
-<center><img src="readme/diagram.png" alt="diagram"></center>
-
+  <center><img src="readme/preview.gif" alt="usage gif"></center>
 
 
 ## USAGE
@@ -69,10 +67,9 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
   ```
 
 
+## STRUCTURE
 
-## PREVIEW
-
-  <center><img src="readme/preview.gif" alt="usage gif"></center>
+<center><img src="readme/diagram.png" alt="diagram"></center>
 
 
 
