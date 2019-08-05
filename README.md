@@ -8,9 +8,7 @@ The goal of this project is to create a chatbot on a Vue-based web and use the G
 
 ## STRUCTURE
 
-```
-    
-```
+<center><img src="readme/diagram.png" alt="diagram"></center>
 
 
 
